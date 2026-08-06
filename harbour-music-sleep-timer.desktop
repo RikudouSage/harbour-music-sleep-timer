@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+X-Nemo-Application-Type=silica-qt5
+Icon=harbour-music-sleep-timer
+Exec=harbour-music-sleep-timer
+Name=Music Sleep Timer
+
+[X-Sailjail]
+Sandboxing=Disabled
