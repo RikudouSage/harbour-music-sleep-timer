@@ -1,9 +1,9 @@
 git:
   filters:
     - filter_type: file
-      source_file: translations/harbour-nextcloud-cookbook.ts
+      source_file: translations/harbour-music-sleep-timer.ts
       file_format: QT
       source_language: en
-      translation_files_expression: translations/harbour-nextcloud-cookbook-<lang>.ts
+      translation_files_expression: translations/harbour-music-sleep-timer-<lang>.ts
   settings:
     pr_branch_name: transifex_update_<br_unique_id>
