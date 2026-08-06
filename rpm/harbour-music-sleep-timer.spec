@@ -1,7 +1,7 @@
 Name:       harbour-music-sleep-timer
 
 Summary:    Music Sleep Timer
-Version:    1.0.0
+Version:    1.1.0
 Release:    1
 License:    MIT
 URL:        http://example.org/
