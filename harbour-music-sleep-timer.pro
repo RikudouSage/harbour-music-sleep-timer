@@ -4,7 +4,10 @@ SOURCES += src/harbour-music-sleep-timer.cpp
 QT += dbus
 
 DISTFILES += qml/harbour-music-sleep-timer.qml \
+    qml/components/TimerDisplay.qml \
+    qml/components/TimerValueLabel.qml \
     qml/cover/CoverPage.qml \
+    qml/pages/ConfigureTimerPage.qml \
     qml/pages/TimerPage.qml \
     rpm/harbour-music-sleep-timer.changes.in \
     rpm/harbour-music-sleep-timer.changes.run.in \
