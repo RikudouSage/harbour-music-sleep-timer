@@ -1,6 +1,8 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="cs">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="cs">
 <context>
-    <name/>
+    <name></name>
     <message id="timer.timer">
         <source>Timer</source>
         <translation>Časovač</translation>
@@ -85,6 +87,10 @@
         <source>Disabled</source>
         <extracomment>Disables the maximum wait limit, so waiting for the track to finish can continue indefinitely.</extracomment>
         <translation>Vypnuto</translation>
+    </message>
+    <message id="cover.title">
+        <source>Music Sleep Timer</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

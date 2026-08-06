@@ -88,5 +88,9 @@
         <extracomment>Disables the maximum wait limit, so waiting for the track to finish can continue indefinitely.</extracomment>
         <translation type="unfinished"></translation>
     </message>
+    <message id="cover.title">
+        <source>Music Sleep Timer</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

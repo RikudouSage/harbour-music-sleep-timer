@@ -6,6 +6,8 @@ Item {
 
     property int remainingSeconds: 0
     property real progress: 0
+    property real scaleRatio: 1.0
+    property real maximumDiameter: Theme.itemSizeHuge * 2
     readonly property int remainingMinutes: Math.floor(remainingSeconds / 60)
     readonly property int remainingSecondsPart: remainingSeconds % 60
     readonly property real normalizedProgress: Math.max(0, Math.min(1, progress))
@@ -15,7 +17,7 @@ Item {
     Item {
         id: timerCircle
 
-        width: Math.min(root.width, Theme.itemSizeHuge * 2)
+        width: Math.min(root.width, root.maximumDiameter)
         height: width
         anchors.horizontalCenter: parent.horizontalCenter
 
@@ -27,7 +29,7 @@ Item {
 
             onPaint: {
                 var context = getContext("2d");
-                var lineWidth = Math.max(4, Math.round(Theme.paddingMedium));
+                var lineWidth = Math.max(4, Math.round(Theme.paddingMedium * root.scaleRatio));
                 var radius = width / 2 - lineWidth;
                 var center = width / 2;
                 var start = -Math.PI / 2;
@@ -75,7 +77,7 @@ Item {
 
                     text: root.remainingMinutes.toLocaleString()
                     color: Theme.primaryColor
-                    font.pixelSize: Theme.fontSizeHuge
+                    font.pixelSize: Theme.fontSizeHuge * root.scaleRatio
                     verticalAlignment: Text.AlignBottom
                 }
 
@@ -84,7 +86,7 @@ Item {
                     //% "min"
                     text: qsTrId("timer_display.minutes")
                     color: Theme.secondaryColor
-                    font.pixelSize: Theme.fontSizeMedium
+                    font.pixelSize: Theme.fontSizeMedium * root.scaleRatio
                     anchors.baseline: minutes.baseline
                     verticalAlignment: Text.AlignBottom
                 }
@@ -100,7 +102,7 @@ Item {
 
                     text: root.remainingSecondsPart.toLocaleString()
                     color: Theme.primaryColor
-                    font.pixelSize: Theme.fontSizeHuge
+                    font.pixelSize: Theme.fontSizeHuge * root.scaleRatio
                     verticalAlignment: Text.AlignBottom
                 }
 
@@ -109,7 +111,7 @@ Item {
                     //% "sec"
                     text: qsTrId("timer_display.seconds")
                     color: Theme.secondaryColor
-                    font.pixelSize: Theme.fontSizeMedium
+                    font.pixelSize: Theme.fontSizeMedium * root.scaleRatio
                     anchors.baseline: seconds.baseline
                     verticalAlignment: Text.AlignBottom
                 }

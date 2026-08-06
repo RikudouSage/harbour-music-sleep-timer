@@ -15,6 +15,10 @@
         <source>The timer is not running. Use the pull down menu to configure it.</source>
         <translation>The timer is not running. Use the pull down menu to configure it.</translation>
     </message>
+    <message id="cover.title">
+        <source>Music Sleep Timer</source>
+        <translation>Music Sleep Timer</translation>
+    </message>
     <message id="timer_display.minutes">
         <source>min</source>
         <extracomment>An abbreaviation for minutes, should be short</extracomment>
