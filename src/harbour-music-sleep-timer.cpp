@@ -12,6 +12,8 @@
 
 #include <sailfishapp.h>
 
+#include "daemoncontroller.h"
+
 constexpr auto TRANSLATION_INSTALL_DIR = "/usr/share/harbour-music-sleep-timer/translations";
 
 namespace {
@@ -93,6 +95,7 @@ int main(int argc, char *argv[])
     QCoreApplication::installTranslator(translator);
 
     // custom deps
+    qmlRegisterType<DaemonController>("dev.chrastecky", 1, 0, "DaemonController");
     // end custom deps
 
     v->setSource(SailfishApp::pathToMainQml());
