@@ -50,7 +50,7 @@
     </message>
     <message id="configure_timer.wait_for_track_finish">
         <source>Wait for track to finish</source>
-        <translation>Vänta till spåraren är färdig</translation>
+        <translation>Vänta till spåret avslutats</translation>
     </message>
     <message id="configure_timer.wait_for_track_finish_description">
         <source>Pause after the current track ends, up to the selected maximum wait.</source>
