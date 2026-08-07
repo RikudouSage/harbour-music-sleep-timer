@@ -44,7 +44,8 @@ CONFIG += sailfishapp_i18n sailfishapp_i18n_idbased
 
 TRANSLATIONS += translations/harbour-music-sleep-timer-en.ts \
                 translations/harbour-music-sleep-timer-cs.ts \
-                translations/harbour-music-sleep-timer-nb.ts
+                translations/harbour-music-sleep-timer-nb.ts \
+                translations/harbour-music-sleep-timer-sv.ts
 
 HEADERS += \
     src/daemoncontroller.h
