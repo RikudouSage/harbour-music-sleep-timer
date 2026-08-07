@@ -7,3 +7,6 @@ Name=Music Sleep Timer
 
 [X-Sailjail]
 Sandboxing=Disabled
+OrganizationName=cz.chrastecky
+ApplicationName=music-sleep-timer
+Permissions=ApplicationInstallation;AppLaunch

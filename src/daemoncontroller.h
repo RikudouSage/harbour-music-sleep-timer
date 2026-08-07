@@ -1,9 +1,17 @@
 #ifndef DAEMONCONTROLLER_H
 #define DAEMONCONTROLLER_H
 
+#include <QByteArray>
 #include <QObject>
 #include <QString>
 #include <QVariant>
+
+#ifdef MUSIC_SLEEP_TIMER_USE_SOCKET
+#include <QJsonObject>
+#include <QLocalSocket>
+#include <QQueue>
+#include <QStringList>
+#endif
 
 class DaemonController : public QObject
 {
@@ -25,10 +33,37 @@ signals:
     void error(const QString &message);
 
 private:
+#ifdef MUSIC_SLEEP_TIMER_USE_SOCKET
+    enum PendingCommand {
+        PendingVoid,
+        PendingHasTimer,
+        PendingGetTimer,
+    };
+
+    void ensureSocketConnected();
+    void sendSocketCommand(const QString &command, PendingCommand pendingCommand);
+    void flushSocketCommands();
+    void handleSocketLine(const QByteArray &line);
+    void handleSocketEvent(const QString &event);
+    void handleSocketResponse(const QJsonObject &response);
+    void handleSocketErrorResponse(const QJsonObject &response);
+    QString socketPath() const;
+
+    QLocalSocket *m_socket = nullptr;
+    QByteArray m_socketBuffer;
+    QStringList m_queuedSocketCommands;
+    QQueue<PendingCommand> m_pendingSocketCommands;
+#else
     void callVoidMethod(const QString &method, const QVariantList &arguments = QVariantList());
     void connectDaemonSignal(const QString &signal, const char *slot);
+#endif
 
 private slots:
+#ifdef MUSIC_SLEEP_TIMER_USE_SOCKET
+    void handleSocketConnected();
+    void handleSocketReadyRead();
+    void handleSocketError();
+#endif
     void handleTimerFired();
     void handleTimerRemoved();
     void handleTimerConfigured();

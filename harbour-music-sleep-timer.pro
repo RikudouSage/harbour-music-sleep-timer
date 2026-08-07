@@ -1,6 +1,6 @@
 TARGET = harbour-music-sleep-timer
 CONFIG += sailfishapp
-QT += dbus
+QT += dbus network
 
 harbour_store {
     DEFINES += MUSIC_SLEEP_TIMER_USE_SOCKET
@@ -26,7 +26,9 @@ harbour_store {
 DISTFILES += qml/harbour-music-sleep-timer.qml \
     qml/components/TimerDisplay.qml \
     qml/components/TimerValueLabel.qml \
+    qml/cover/CoverEmpty.qml \
     qml/cover/CoverPage.qml \
+    qml/pages/CheckDaemonPage.qml \
     qml/pages/ConfigureTimerPage.qml \
     qml/pages/TimerPage.qml \
     rpm/harbour-music-sleep-timer.changes.in \
@@ -49,7 +51,9 @@ TRANSLATIONS += translations/harbour-music-sleep-timer-en.ts \
 
 SOURCES += src/harbour-music-sleep-timer.cpp \
     src/daemoncontroller-dbus.cpp \
-    src/daemoncontroller-socket.cpp
+    src/daemoncontroller-socket.cpp \
+    src/daemoninstaller.cpp
 
 HEADERS += \
-    src/daemoncontroller.h
+    src/daemoncontroller.h \
+    src/daemoninstaller.h
