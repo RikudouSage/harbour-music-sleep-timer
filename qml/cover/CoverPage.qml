@@ -1,7 +1,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import Nemo.DBus 2.0
 import Nemo.Time 1.0
+import dev.chrastecky 1.0
 import "../components"
 
 CoverBackground {
@@ -23,8 +23,8 @@ CoverBackground {
         cover.createdAtUnix = exists ? createdAtUnix : 0;
     }
 
-    function onDBusError(e) {
-        console.error(e);
+    function onDBusError(message) {
+        console.error(message);
     }
 
     WallClock {
@@ -34,43 +34,23 @@ CoverBackground {
         updateFrequency: WallClock.Second
     }
 
-    DBusInterface {
+    DaemonController {
         id: daemon
 
-        bus: DBus.SessionBus
-        service: 'dev.rikudousage.MusicStopDaemon'
-        path: '/dev/rikudousage/MusicStopDaemon'
-        iface: 'dev.rikudousage.MusicStopDaemon.Controller'
-
-        signalsEnabled: true
-        watchServiceStatus: true
-
-        function timerFired() {
+        onTimerFired: {
             cover.onTimerUpdated(false, 0, 0);
         }
-        function timerRemoved() {
+        onTimerRemoved: {
             cover.onTimerUpdated(false, 0, 0);
         }
-        function timerConfigured() {
+        onTimerConfigured: {
             daemon.getTimer();
         }
-
-        function getTimer() {
-            typedCall("GetTimer", [], function(result) {
-                var exists = result[0];
-                var fireAtUnix = result[1];
-                var createdAtUnix = result[2];
-
-                cover.onTimerUpdated(exists, fireAtUnix, createdAtUnix);
-            }, function(e) {
-                cover.onDBusError(e);
-            });
+        onTimerReceived: {
+            cover.onTimerUpdated(exists, fireAtUnix, createdAtUnix);
         }
-
-        function cancelTimer() {
-            call("CancelTimer", undefined, undefined, function(e) {
-                cover.onDBusError(e);
-            });
+        onError: {
+            cover.onDBusError(message);
         }
     }
 
