@@ -1,5 +1,7 @@
 #include "daemoncontroller.h"
 
+#ifndef MUSIC_SLEEP_TIMER_USE_SOCKET
+
 #include <QDBusArgument>
 #include <QDBusConnection>
 #include <QDBusError>
@@ -168,3 +170,5 @@ void DaemonController::handleTimerConfigured()
 {
     emit timerConfigured();
 }
+
+#endif

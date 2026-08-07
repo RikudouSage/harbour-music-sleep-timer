@@ -1,11 +1,9 @@
 TARGET = harbour-music-sleep-timer
 CONFIG += sailfishapp
-SOURCES += src/harbour-music-sleep-timer.cpp \
-    src/daemoncontroller.cpp
 QT += dbus
 
 harbour_store {
-    DEFINES += USE_SOCKET
+    DEFINES += MUSIC_SLEEP_TIMER_USE_SOCKET
     DEFINES += INSTALL_BUNDLED_DAEMON
 
     DAEMON_RPM_DIR = $$OUT_PWD/daemon-rpms
@@ -34,6 +32,8 @@ DISTFILES += qml/harbour-music-sleep-timer.qml \
     rpm/harbour-music-sleep-timer.changes.in \
     rpm/harbour-music-sleep-timer.changes.run.in \
     rpm/harbour-music-sleep-timer.spec \
+    src/daemoncontroller-dbus.cpp \
+    src/daemoncontroller-socket.cpp \
     scripts/download-harbour-daemon-rpms.sh \
     translations/*.ts \
     harbour-music-sleep-timer.desktop
@@ -46,6 +46,10 @@ TRANSLATIONS += translations/harbour-music-sleep-timer-en.ts \
                 translations/harbour-music-sleep-timer-cs.ts \
                 translations/harbour-music-sleep-timer-nb.ts \
                 translations/harbour-music-sleep-timer-sv.ts
+
+SOURCES += src/harbour-music-sleep-timer.cpp \
+    src/daemoncontroller-dbus.cpp \
+    src/daemoncontroller-socket.cpp
 
 HEADERS += \
     src/daemoncontroller.h
