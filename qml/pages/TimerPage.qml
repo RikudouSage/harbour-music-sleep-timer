@@ -1,8 +1,8 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import Sailfish.Silica.private 1.0
-import Nemo.DBus 2.0
 import Nemo.Time 1.0
+import dev.chrastecky 1.0
 import "../components"
 
 Page {
@@ -28,8 +28,8 @@ Page {
         page.maxWaitSeconds = maxWaitSeconds;
     }
 
-    function onDBusError(e) {
-        console.error(e);
+    function onDBusError(message) {
+        console.error(message);
         // todo handle UI
     }
 
@@ -40,67 +40,29 @@ Page {
         updateFrequency: WallClock.Second
     }
 
-    DBusInterface {
+    DaemonController {
         id: daemon
 
-        bus: DBus.SessionBus
-        service: 'dev.rikudousage.MusicStopDaemon'
-        path: '/dev/rikudousage/MusicStopDaemon'
-        iface: 'dev.rikudousage.MusicStopDaemon.Controller'
-
-        signalsEnabled: true
-        watchServiceStatus: true
-
-        // signals
-        function timerFired() {
+        onTimerFired: {
             page.onTimerUpdated(false, 0, 0, false, 0);
         }
-        function timerRemoved() {
+        onTimerRemoved: {
             page.onTimerUpdated(false, 0, 0, false, 0);
         }
-        function timerConfigured() {
+        onTimerConfigured: {
             daemon.getTimer();
         }
-
-        // methods
-        function createTimer(fireInSeconds, waitForTrackFinish, maxWaitSeconds) {
-            call("CreateTimer", [
-                fireInSeconds,
-                waitForTrackFinish,
-                maxWaitSeconds,
-            ], undefined, function(e) {
-                page.onDBusError(e);
-            });
+        onTimerReceived: {
+            page.onTimerUpdated(exists, fireAtUnix, createdAtUnix, waitForTrackFinish, maxWaitSeconds);
         }
-        function cancelTimer() {
-            call("CancelTimer", undefined, undefined, function(e) {
-                page.onDBusError(e);
-            });
-        }
-        function hasTimer() {
-            call("HasTimer", undefined, function(hasTimer) {
-                var result = hasTimer;
-            }, function(e) {
-                page.onDBusError(e);
-            });
-        }
-        function getTimer() {
-            typedCall("GetTimer", [], function(result) {
-                var exists = result[0];
-                var fireAtUnix = result[1];
-                var createdAtUnix = result[2];
-                var waitForTrackFinish = result[3];
-                var maxWaitSeconds = result[4];
-
-                page.onTimerUpdated(exists, fireAtUnix, createdAtUnix, waitForTrackFinish, maxWaitSeconds);
-            }, function(e) {
-                page.onDBusError(e);
-            });
+        onError: {
+            page.onDBusError(message);
         }
     }
 
     Component.onCompleted: {
         daemon.getTimer();
+        app.cover = Qt.resolvedUrl("../cover/CoverPage.qml");
     }
 
     SilicaFlickable {

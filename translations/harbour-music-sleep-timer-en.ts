@@ -91,5 +91,42 @@
         <source>Configure timer</source>
         <translation>Configure timer</translation>
     </message>
+    <message id="check_daemon.loading">
+        <source>Loading...</source>
+        <translation>Loading...</translation>
+    </message>
+    <message id="check_daemon.installing">
+        <source>Installing daemon...</source>
+        <translation>Installing daemon...</translation>
+    </message>
+    <message id="check_daemon.install_failed">
+        <source>Installation of the daemon failed, cannot continue.</source>
+        <translation>Installation of the daemon failed, cannot continue.</translation>
+    </message>
+    <message id="check_daemon.title">
+        <source>Checking daemon</source>
+        <translation>Checking daemon</translation>
+    </message>
+    <message id="check_daemon.install_daemon.description">
+        <source>For this app to work, a background daemon needs to be installed - this daemon actually controls the music and this app exists to control the daemon</source>
+        <oldsource>For this app to work, a background daemon needs to be installed - this daemon actually controls the music and this app is there just to control it.</oldsource>
+        <translation>For this app to work, a background daemon needs to be installed - this daemon actually controls the music and this app exists to control the daemon</translation>
+    </message>
+    <message id="check_daemon.install_daemon.install">
+        <source>Install daemon</source>
+        <translation>Install daemon</translation>
+    </message>
+    <message id="check_daemon.enabling">
+        <source>Enabling daemon...</source>
+        <translation>Enabling daemon...</translation>
+    </message>
+    <message id="daemon_check.unknown_status">
+        <source>Daemon status check returned unknown status: %1</source>
+        <translation>Daemon status check returned unknown status: %1</translation>
+    </message>
+    <message id="check_daemon.start_failed">
+        <source>Failed starting the daemon, the app cannot continue.</source>
+        <translation>Failed starting the daemon, the app cannot continue.</translation>
+    </message>
 </context>
 </TS>

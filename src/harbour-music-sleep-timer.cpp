@@ -12,6 +12,11 @@
 
 #include <sailfishapp.h>
 
+#include "daemoncontroller.h"
+#ifdef INSTALL_BUNDLED_DAEMON
+#include "daemoninstaller.h"
+#endif
+
 constexpr auto TRANSLATION_INSTALL_DIR = "/usr/share/harbour-music-sleep-timer/translations";
 
 namespace {
@@ -93,6 +98,13 @@ int main(int argc, char *argv[])
     QCoreApplication::installTranslator(translator);
 
     // custom deps
+    qmlRegisterType<DaemonController>("dev.chrastecky", 1, 0, "DaemonController");
+#ifdef INSTALL_BUNDLED_DAEMON
+    v->rootContext()->setContextProperty("installBundled", true);
+    qmlRegisterType<DaemonInstaller>("dev.chrastecky", 1, 0, "DaemonInstaller");
+#else
+    v->rootContext()->setContextProperty("installBundled", false);
+#endif
     // end custom deps
 
     v->setSource(SailfishApp::pathToMainQml());

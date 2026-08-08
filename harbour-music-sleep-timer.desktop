@@ -6,4 +6,7 @@ Exec=harbour-music-sleep-timer
 Name=Music Sleep Timer
 
 [X-Sailjail]
-Sandboxing=Disabled
+#Sandboxing=Disabled
+OrganizationName=cz.chrastecky
+ApplicationName=music-sleep-timer
+Permissions=ApplicationInstallation;AppLaunch
