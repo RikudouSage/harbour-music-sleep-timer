@@ -62,6 +62,7 @@ Page {
 
     Component.onCompleted: {
         daemon.getTimer();
+        app.cover = Qt.resolvedUrl("../cover/CoverPage.qml");
     }
 
     SilicaFlickable {

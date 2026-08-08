@@ -1,6 +1,6 @@
 TARGET = harbour-music-sleep-timer
 CONFIG += sailfishapp
-QT += dbus network
+QT += dbus network concurrent
 
 harbour_store {
     DEFINES += MUSIC_SLEEP_TIMER_USE_SOCKET
