@@ -1,8 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="nb">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="nb">
 <context>
-    <name></name>
+    <name/>
     <message id="timer.timer">
         <source>Timer</source>
         <translation>Timer</translation>
@@ -94,40 +92,40 @@
     </message>
     <message id="check_daemon.loading">
         <source>Loading...</source>
-        <translation type="unfinished"></translation>
+        <translation>Laster inn...</translation>
     </message>
     <message id="check_daemon.installing">
         <source>Installing daemon...</source>
-        <translation type="unfinished"></translation>
+        <translation>Installerer demonen...</translation>
     </message>
     <message id="check_daemon.install_failed">
         <source>Installation of the daemon failed, cannot continue.</source>
-        <translation type="unfinished"></translation>
+        <translation> Installasjonen av demonen mislyktes, kan ikke fortsette. </translation>
     </message>
     <message id="check_daemon.title">
         <source>Checking daemon</source>
-        <translation type="unfinished"></translation>
+        <translation>Sjekker demonen</translation>
     </message>
     <message id="check_daemon.install_daemon.description">
         <source>For this app to work, a background daemon needs to be installed - this daemon actually controls the music and this app exists to control the daemon</source>
         <oldsource>For this app to work, a background daemon needs to be installed - this daemon actually controls the music and this app is there just to control it.</oldsource>
-        <translation type="unfinished"></translation>
+        <translation>For at denne appen skal fungere, må en bakgrunnsdemon installeres – denne demonen er den som faktisk styrer musikken, mens appen er laget for å styre demonen.</translation>
     </message>
     <message id="check_daemon.install_daemon.install">
         <source>Install daemon</source>
-        <translation type="unfinished"></translation>
+        <translation>Installer demonen</translation>
     </message>
     <message id="check_daemon.enabling">
         <source>Enabling daemon...</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktiver demonen...</translation>
     </message>
     <message id="daemon_check.unknown_status">
         <source>Daemon status check returned unknown status: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Statussjekk for demonen returnerte ukjent status: %1 </translation>
     </message>
     <message id="check_daemon.start_failed">
         <source>Failed starting the daemon, the app cannot continue.</source>
-        <translation type="unfinished"></translation>
+        <translation>Klarte ikke å starte demonen, appen kan ikke fortsette. </translation>
     </message>
 </context>
 </TS>
